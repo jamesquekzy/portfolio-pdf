@@ -29,6 +29,26 @@
     </style>
   </head>
   <body>
-    <iframe src="sample.pdf" frameborder="0"></iframe>
+    <iframe id="pdfContainer" src="sample.pdf" frameborder="0"></iframe>
+
+    <script>
+      function updateView() {
+        let pdfContainer = document.getElementById("pdfContainer");
+        if (window.innerWidth <= 767) {
+          // mobile pdf file name
+          // pdfContainer.src = "jq-portfolio-mobile.pdf";
+          pdfContainer.src = "sample.pdf";
+        } else {
+          // default pdf file name
+          // pdfContainer.src = "jq-portfolio.pdf";
+          pdfContainer.src = "sample.pdf";
+        }
+      }
+
+      updateView();
+
+      // update pdf view on window resize
+      window.addEventListener("resize", updateView);
+    </script>
   </body>
 </html>
