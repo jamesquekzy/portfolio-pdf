@@ -35,8 +35,12 @@
       function updateView() {
         let pdfContainer = document.getElementById("pdfContainer");
         if (window.innerWidth <= 767 && window.innerWidth >= 640) {
-          // mobile pdf file name
-          // pdfContainer.src = "jq-portfolio-mobile.pdf";
+          // mobile/default pdf file name
+          // pdfContainer.src = "jq-portfolio.pdf";
+          pdfContainer.src = "in-progress.pdf";
+        } else if (window.innerWidth < 640) {
+          // mobile vertical alert pdf file name
+          // pdfContainer.src = "mobile-vertical-alert.pdf";
           pdfContainer.src = "in-progress.pdf";
         } else {
           // default pdf file name
