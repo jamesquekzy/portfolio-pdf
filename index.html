@@ -18,41 +18,49 @@
       iframe {
         width: 100%;
         height: 100%;
+        border: none;
       }
 
       @media only screen and (max-width: 767px) {
         iframe {
-          width: 100%;
-          height: 100%;
+          display: none;
         }
       }
     </style>
   </head>
   <body>
-    <iframe id="pdfContainer" src="in-progress.pdf" frameborder="0"></iframe>
+    <iframe id="pdfContainer" src="jq-portfolio.pdf" frameborder="0"></iframe>
 
     <script>
       function updateView() {
-        let pdfContainer = document.getElementById("pdfContainer");
-        if (window.innerWidth <= 767 && window.innerWidth >= 640) {
-          // mobile/default pdf file name
-          pdfContainer.src = "jq-portfolio.pdf";
-          // pdfContainer.src = "in-progress.pdf";
-        } else if (window.innerWidth < 640) {
-          // mobile vertical alert pdf file name
-          // pdfContainer.src = "mobile-vertical-alert.pdf";
-          // pdfContainer.src = "in-progress.pdf";
-          pdfContainer.src = "jq-portfolio.pdf";
+        const pdfContainer = document.getElementById("pdfContainer");
+        if (window.innerWidth <= 767) {
+          // Create a link element
+          const link = document.createElement("a");
+          link.href = "jq-portfolio.pdf";
+          link.download = "jq-portfolio.pdf";
+
+          // Append link to the body
+          document.body.appendChild(link);
+
+          // Trigger the download
+          link.click();
+
+          // Remove the link from the body
+          document.body.removeChild(link);
+
+          // Hide the iframe
+          pdfContainer.style.display = "none";
         } else {
-          // default pdf file name
-          pdfContainer.src = "jq-portfolio.pdf";
-          // pdfContainer.src = "in-progress.pdf";
+          // Show the iframe for larger screens
+          pdfContainer.style.display = "block";
         }
       }
 
+      // Initial check
       updateView();
 
-      // update pdf view on window resize
+      // Update PDF view on window resize
       window.addEventListener("resize", updateView);
     </script>
   </body>
