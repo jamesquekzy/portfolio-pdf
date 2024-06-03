@@ -13,6 +13,7 @@
         align-items: center;
         height: 100vh;
         background-color: #f8f6f0;
+        flex-direction: column;
       }
 
       iframe {
@@ -21,39 +22,47 @@
         border: none;
       }
 
+      .download-link {
+        display: none;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #007bff;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
       @media only screen and (max-width: 767px) {
         iframe {
           display: none;
+        }
+
+        .download-link {
+          display: block;
+          text-align: center;
         }
       }
     </style>
   </head>
   <body>
     <iframe id="pdfContainer" src="jq-portfolio.pdf" frameborder="0"></iframe>
+    <a class="download-link" href="jq-portfolio.pdf" download="jq-portfolio.pdf"
+      >Click here to download portfolio PDF</a
+    >
 
     <script>
       function updateView() {
         const pdfContainer = document.getElementById("pdfContainer");
+        const downloadLink = document.querySelector(".download-link");
         if (window.innerWidth <= 767) {
-          // Create a link element
-          const link = document.createElement("a");
-          link.href = "jq-portfolio.pdf";
-          link.download = "jq-portfolio.pdf";
-
-          // Append link to the body
-          document.body.appendChild(link);
-
-          // Trigger the download
-          link.click();
-
-          // Remove the link from the body
-          document.body.removeChild(link);
-
           // Hide the iframe
           pdfContainer.style.display = "none";
+          // Show the download link
+          downloadLink.style.display = "block";
         } else {
-          // Show the iframe for larger screens
+          // Show the iframe
           pdfContainer.style.display = "block";
+          // Hide the download link
+          downloadLink.style.display = "none";
         }
       }
 
