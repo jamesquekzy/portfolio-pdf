@@ -22,15 +22,6 @@
         border: none;
       }
 
-      .download-link {
-        display: none;
-        margin-top: 20px;
-        font-size: 16px;
-        color: #007bff;
-        text-decoration: underline;
-        cursor: pointer;
-      }
-
       @media only screen and (max-width: 767px) {
         iframe {
           display: none;
@@ -38,16 +29,35 @@
 
         .download-link {
           display: block;
+          margin-top: 20px;
+          padding: 20px;
+          max-width: 80%;
+          font-size: 16px;
+          line-height: 140%;
+          color: #333333;
+          background-color: #f8f6f0;
+          border: 0.75px solid #333333;
+          border-radius: 10px;
           text-align: center;
+          text-decoration: none;
+          cursor: pointer;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+            sans-serif;
         }
       }
     </style>
   </head>
   <body>
     <iframe id="pdfContainer" src="jq-portfolio.pdf" frameborder="0"></iframe>
-    <a class="download-link" href="jq-portfolio.pdf" download="jq-portfolio.pdf"
-      >Click here to download portfolio PDF</a
+    <a
+      class="download-link"
+      href="jq-portfolio.pdf"
+      download="jq-portfolio.pdf"
     >
+      Click here to download portfolio PDF<br />or view portfolio on desktop
+      instead.
+    </a>
 
     <script>
       function updateView() {
